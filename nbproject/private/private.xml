@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/D:/PRJ301/FirstDemo/src/java/DTO/AccountDTO.java</file>
+            <file>file:/D:/PRJ301/FirstDemo/web/edit.jsp</file>
+            <file>file:/D:/PRJ301/FirstDemo/web/account.jsp</file>
+            <file>file:/D:/PRJ301/FirstDemo/src/java/Controller/AccountEditController.java</file>
+            <file>file:/D:/PRJ301/FirstDemo/src/java/DAO/TaskDAO.java</file>
+            <file>file:/D:/PRJ301/FirstDemo/src/java/Entity/Task.java</file>
+            <file>file:/D:/PRJ301/FirstDemo/src/java/Entity/Account.java</file>
+            <file>file:/D:/PRJ301/FirstDemo/src/java/Controller/Main.java</file>
+            <file>file:/D:/PRJ301/FirstDemo/src/java/DTO/UpdateAccount.java</file>
+            <file>file:/D:/PRJ301/FirstDemo/web/login.jsp</file>
+            <file>file:/D:/PRJ301/FirstDemo/src/java/DTO/AccountException.java</file>
+            <file>file:/D:/PRJ301/FirstDemo/src/java/DAO/DBContext.java</file>
+            <file>file:/D:/PRJ301/FirstDemo/src/java/Controller/TaskServlet.java</file>
+            <file>file:/D:/PRJ301/FirstDemo/src/java/Controller/LoginServlet.java</file>
+            <file>file:/D:/PRJ301/FirstDemo/web/WEB-INF/web.xml</file>
+            <file>file:/D:/PRJ301/FirstDemo/src/java/ConnectDB.properties</file>
+            <file>file:/D:/PRJ301/FirstDemo/src/java/DTO/CreateAccountDTO.java</file>
+            <file>file:/D:/PRJ301/FirstDemo/web/task.jsp</file>
+            <file>file:/D:/PRJ301/FirstDemo/src/java/DAO/AccountDAO.java</file>
+            <file>file:/D:/PRJ301/FirstDemo/src/java/Controller/AccountController.java</file>
+        </group>
+    </open-files>
+</project-private>
