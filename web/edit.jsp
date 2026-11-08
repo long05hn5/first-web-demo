@@ -14,7 +14,6 @@
     </head>
     <form action="accountedit" method="post">
         <input type="hidden" name="id" value="${acc.getId()}">
-        <input type="hidden" name="id" value="${acc.getId()}">
         Tên đăng nhập: <input type="text" name="account" value="${acc.getAccount()} "readonly>
         <br>
         Họ và tên: <input type="text" name="name" value="${acc.getName()}">

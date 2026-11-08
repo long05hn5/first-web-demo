@@ -16,12 +16,14 @@
             <file>file:/D:/PRJ301/FirstDemo/src/java/DTO/AccountException.java</file>
             <file>file:/D:/PRJ301/FirstDemo/src/java/DAO/DBContext.java</file>
             <file>file:/D:/PRJ301/FirstDemo/src/java/Controller/TaskServlet.java</file>
+            <file>file:/D:/PRJ301/FirstDemo/web/editTask.jsp</file>
             <file>file:/D:/PRJ301/FirstDemo/src/java/Controller/LoginServlet.java</file>
             <file>file:/D:/PRJ301/FirstDemo/web/WEB-INF/web.xml</file>
             <file>file:/D:/PRJ301/FirstDemo/src/java/ConnectDB.properties</file>
             <file>file:/D:/PRJ301/FirstDemo/src/java/DTO/CreateAccountDTO.java</file>
             <file>file:/D:/PRJ301/FirstDemo/web/task.jsp</file>
             <file>file:/D:/PRJ301/FirstDemo/src/java/DAO/AccountDAO.java</file>
+            <file>file:/D:/PRJ301/FirstDemo/src/java/Controller/TaskEditController.java</file>
             <file>file:/D:/PRJ301/FirstDemo/src/java/Controller/AccountController.java</file>
         </group>
     </open-files>

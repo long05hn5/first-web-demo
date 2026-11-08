@@ -16,6 +16,10 @@
         <servlet-name>TaskServlet</servlet-name>
         <servlet-class>Controller.TaskServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>TaskEditController</servlet-name>
+        <servlet-class>Controller.TaskEditController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HelloWorldServlet</servlet-name>
         <url-pattern>/HelloWorldServlet</url-pattern>
@@ -31,5 +35,9 @@
     <servlet-mapping>
         <servlet-name>TaskServlet</servlet-name>
         <url-pattern>/task</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TaskEditController</servlet-name>
+        <url-pattern>/taskedit</url-pattern>
     </servlet-mapping>
 </web-app>

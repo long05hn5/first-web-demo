@@ -69,7 +69,6 @@ public class AccountEditController extends HttpServlet {
             response.sendRedirect("login.jsp");
         } else {
             Account acc = dao.getAccountById(Integer.parseInt(id));
-
             request.setAttribute("acc", acc);
             RequestDispatcher rd;
             if (id == null || id == "") {
@@ -115,12 +114,10 @@ public class AccountEditController extends HttpServlet {
                     password = dao.getAccountById(Integer.parseInt(id)).getPassword();
                 }
                 if (exp.isValid()) {
-                    System.out.println("hai");
                     UpdateAccount acc = new UpdateAccount(Integer.parseInt(id), name, Integer.parseInt(age), address, email, phoneNumber, password);
                     dao.updateAccount(acc);
                     mess = "Update Succesfull";
                 }
-                System.out.println("ajsd");
             } catch (NumberFormatException e) {
                 System.out.println("checkUpdate" + e.getMessage());
             }

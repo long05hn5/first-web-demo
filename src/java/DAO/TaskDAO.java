@@ -18,25 +18,27 @@ import java.sql.Timestamp;
  */
 public class TaskDAO extends DBContext {
 
-    public List<Task> getAllTask() {
+    public List<Task> getAllTask(int userId) {
         List<Task> list = new ArrayList<>();
         String sql = """
-                     SELECT 
-                         t.ID, t.TaskType, t.Priority, t.Title, t.Description, 
-                         t.Progress, t.AssignByUser, t.CreateAt, t.CreatedBy, t.UpdatedBy, t.UpdateAt, t.DeleteAt, t.DeletedBy,
-                         creator.Name AS CreatorName, 
-                         assignee.Name AS AssignName,
-                     \tupdated.Name AS UpdateName,
-                     \tdeleted.Name AS DeleteName
-                     FROM Task AS t
-                     LEFT JOIN Account AS creator ON t.CreatedBy = creator.ID
-                     LEFT JOIN Account AS assignee ON t.AssignByUser = assignee.ID
-                     LEFT JOIN account AS updated ON t.UpdatedBy = updated.ID
-                     LEFT JOIN account AS deleted ON t.DeletedBy = deleted.ID
-                     Where t.Status = 1
+                    SELECT
+                                                                 t.ID, t.TaskType, t.Priority, t.Title, t.Description, 
+                                                                   t.Progress, t.AssignByUser, t.CreateAt, t.CreatedBy, t.UpdatedBy, t.UpdateAt, t.DeleteAt, t.DeletedBy,
+                                                                   creator.Name AS CreatorName, 
+                                                                   assignee.Name AS AssignName,
+                                                               updated.Name AS UpdateName,
+                                                               deleted.Name AS DeleteName
+                                                               FROM Task AS t
+                                                               LEFT JOIN Account AS creator ON t.CreatedBy = creator.ID
+                                                               LEFT JOIN Account AS assignee ON t.AssignByUser = assignee.ID
+                                                               LEFT JOIN account AS updated ON t.UpdatedBy = updated.ID
+                                                               LEFT JOIN account AS deleted ON t.DeletedBy = deleted.ID
+                                                               Where t.Status = 1 and (creator.ID = ? or assignee.ID = ?)
                      """;
         try {
             PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, userId);
+            st.setInt(2, userId);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 Task tasks = new Task(rs.getInt("ID"), rs.getString("TaskType"), rs.getString("Priority"), rs.getString("Title"), rs.getString("Description"), rs.getFloat("Progress"), rs.getInt("AssignByUser"), rs.getTimestamp("CreateAt"), rs.getInt("CreatedBy"), rs.getInt("UpdatedBy"), rs.getTimestamp("UpdateAt"), rs.getInt("DeletedBy"), rs.getTimestamp("DeleteAt"));
@@ -88,7 +90,7 @@ public class TaskDAO extends DBContext {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setInt(1, id);
             ResultSet rs = st.executeQuery();
-            if(rs.next()) {
+            if (rs.next()) {
                 Task tasks = new Task(rs.getInt("ID"), rs.getString("TaskType"), rs.getString("Priority"), rs.getString("Title"), rs.getString("Description"), rs.getFloat("Progress"), rs.getInt("AssignByUser"), rs.getTimestamp("CreateAt"), rs.getInt("CreatedBy"), rs.getInt("UpdatedBy"), rs.getTimestamp("UpdateAt"), rs.getInt("DeletedBy"), rs.getTimestamp("DeleteAt"));
                 Account acc = new Account();
                 acc.setId(rs.getInt("CreatedBy"));

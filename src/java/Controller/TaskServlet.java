@@ -5,13 +5,16 @@
 package Controller;
 
 import DAO.TaskDAO;
+import Entity.Account;
 import Entity.Task;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -37,7 +40,7 @@ public class TaskServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet TaskServlet</title>");            
+            out.println("<title>Servlet TaskServlet</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet TaskServlet at " + request.getContextPath() + "</h1>");
@@ -58,22 +61,33 @@ public class TaskServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String key = request.getParameter("key");
+        HttpSession session = request.getSession();
+        Account acc = (Account) session.getAttribute("acc");
         TaskDAO dao = new TaskDAO();
-        List<Task> task = dao.getAllTask();
+        List<Task> task = new ArrayList<>();
+
+        if (acc == null) {
+            response.sendRedirect("login.jsp");
+        } else {
+            task = dao.getAllTask(acc.getId());
+        }
         request.setAttribute("task", task);
-        request.getRequestDispatcher("task.jsp").forward(request, response);
+        request.getRequestDispatcher("editTask.jsp").forward(request, response);
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+
+
+/**
+ * Handles the HTTP <code>POST</code> method.
+ *
+ * @param request servlet request
+ * @param response servlet response
+ * @throws ServletException if a servlet-specific error occurs
+ * @throws IOException if an I/O error occurs
+ */
+@Override
+protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
@@ -84,7 +98,7 @@ public class TaskServlet extends HttpServlet {
      * @return a String containing servlet description
      */
     @Override
-    public String getServletInfo() {
+public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
 
